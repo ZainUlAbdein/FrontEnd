@@ -1,12 +1,12 @@
 <div class="container mx-auto px-4 py-8">
     <h2 class="text-2xl font-semibold mb-4">Search for Songs</h2>
-    <div class="flex items-center mb-4">
+    <div class="custom-search">
         <input id="searchInput" type="text" [(ngModel)]="query" placeholder="Enter song name..."
             class="flex-grow border border-gray-300 rounded-md py-2 px-4 mr-2 focus:outline-none focus:border-blue-500" (keypress)="onKeyPress($event)">
         <button id="searchButton" class="btn-search bg-blue-500 text-white py-2 px-4 rounded-md focus:outline-none "
-            (click)="search()"  >Search</button>
+            (click)="search()"><i class="fas fa-search fa-lg"></i></button>
+        <div class="icon-search" (click)="search()"></div>
     </div>
-
     
 
 
