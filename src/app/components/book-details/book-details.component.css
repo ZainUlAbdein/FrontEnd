@@ -1,0 +1,66 @@
+/* book-details.component.css */
+
+.card {
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px; /* Add padding to the card */
+  }
+  
+  .close-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    color: #555; /* Adjust the color as needed */
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+    transition: background-color 0.3s ease;
+    width: 32px; /* Constrain width */
+    height: 32px; /* Constrain height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .close-icon:hover {
+    background-color: rgba(0, 0, 0, 0.1); /* Light gray background on hover */
+  }
+  
+  .card-body {
+    padding: 20px; /* Add padding to the card body */
+  }
+  
+  .card-image {
+    float: left;
+    margin-right: 20px; /* Space between image and text */
+  }
+  
+  .card-image img {
+    border-radius: 10px;
+  }
+  
+  .card-details {
+    overflow: hidden; /* Ensure text doesn't overflow */
+  }
+  
+  .card-title {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+  }
+  
+  .author, .category {
+    font-style: italic;
+  }
+  
+  @media (max-width: 767px) {
+    .card-image {
+      float: none; /* Stack image on top in small screens */
+      margin-right: 0;
+      margin-bottom: 20px; /* Space between image and text in small screens */
+    }
+  }
+  

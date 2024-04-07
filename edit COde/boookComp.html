@@ -1,0 +1,66 @@
+
+ 
+<div class="container mx-auto">
+    <div class="flex flex-wrap justify-between">
+        <!-- Categories Section -->
+        <div class="w-full md:w-1/4 px-4">
+            <div class="bg-white shadow-md rounded-lg overflow-hidden">
+                <h3 class="text-lg font-semibold bg-gray-100 px-4 py-3">Categories</h3>
+                <ul class="list-group">
+                    <li class="list-group-item cursor-pointer hover:bg-gray-100" (click)="filterBooks('All')">All</li>
+                    <li class="list-group-item cursor-pointer hover:bg-gray-100" *ngFor="let category of categories" (click)="filterBooks(category)">{{ category }}</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Main Content Section -->
+        <div class="w-full md:w-3/4 px-4">
+            <div class="search-bar mb-4">
+                <input type="text" class="form-input w-full border border-gray-300 rounded-md py-2 px-4" placeholder="Search Books" (keyup)="onSearchChange($event)">
+            </div>
+            
+            <!-- Display BookDetailsComponent if a book is selected -->
+            <app-book-details *ngIf="selectedBook"
+                              [selectedBook]="selectedBook"
+                              (backClicked)="handleBack()">
+            </app-book-details>
+            
+            <!-- Display list of books if no book is selected -->
+            <div *ngIf="!selectedBook" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="flex flex-col" *ngFor="let book of filteredBooks">
+                    <div class="bg-white shadow-md rounded-lg overflow-hidden cursor-pointer hover:shadow-lg" (click)="selectBook(book)">
+                        <img [src]="book.imageUrl" class="w-full h-48 object-cover" alt="{{ book.name }}">
+                        <div class="p-4">
+                            <h5 class="text-lg font-semibold">{{ book.name }}</h5>
+                            <p class="text-gray-600">{{ book.author }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pagination -->
+            <div class="flex justify-between items-center mt-4">
+                <button class="btn btn-primary" (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+                <span class="text-lg font-semibold">{{ currentPage }} / {{ totalPages }}</span>
+                <button class="btn btn-primary" (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Top Books Section -->
+    <div class="mt-8">
+        <h3 class="text-lg font-semibold">Top Books</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="flex flex-col" *ngFor="let topBook of topBooks">
+                <div class="bg-white shadow-md rounded-lg overflow-hidden">
+                    <img [src]="topBook.imageUrl" class="w-full h-48 object-cover" alt="{{ topBook.name }}">
+                    <div class="p-4">
+                        <h5 class="text-lg font-semibold">{{ topBook.name }}</h5>
+                        <p class="text-gray-600">{{ topBook.author }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  

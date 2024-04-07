@@ -1,0 +1,74 @@
+<div class="container mx-auto px-4 py-8">
+    <!-- Header -->
+    <h2 class="text-3xl font-semibold mb-8">Library</h2>
+    <hr class="my-8">
+
+    <!-- Display BookDetailsComponent if a book is selected -->
+    <app-lib-details *ngIf="selectedlib"
+        [selectedlib]="selectedlib"
+        (backClicked)="handleBack()">
+    </app-lib-details>
+
+    <!-- Book List -->
+    <div *ngIf="!selectedlib">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div *ngFor="let book of books" class="card bg-white shadow-md transition-transform duration-300 ease-in-out transform hover:scale-105 p-4" (click)="selectBook(book)">
+                <img [src]="book.coverImage" class="w-full h-64 object-cover rounded-t-lg" alt="Book Cover">
+                <div class="py-4">
+                    <h5 class="text-lg font-semibold mb-2">{{ book.title }}</h5>
+                    <p class="text-gray-700">Author: {{ book.author }}</p>
+                    <p class="text-gray-700">Category: {{ book.category }}</p>
+                    <p class="text-gray-700">Summary: {{ book.relatedData.summary }}</p>
+                    <p class="text-gray-700">Publication Date: {{ book.relatedData.publicationDate }}</p>
+                    <p class="text-gray-700">Publisher: {{ book.relatedData.publisher }}</p>
+                    <!-- Add other book details -->
+                    <a [href]="book.pdfUrl" target="_blank" class="text-blue-500 hover:underline">Download PDF</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Upload Button -->
+    <button (click)="toggleAddBookForm()" class="fixed bottom-8 right-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Add New Book</button>
+
+    <!-- Book Upload Form -->
+    <div [@slideInOut]="showAddBookForm" class="fixed bottom-0 right-0 bg-gray-100 rounded p-6 mb-8 mr-8">
+        <h3 class="text-xl font-semibold mb-4">Upload New Book</h3>
+        <form (ngSubmit)="uploadBook()" class="space-y-4">
+            <!-- Form fields -->
+            <div class="flex flex-col space-y-4">
+                <label for="title" class="text-lg">Title:</label>
+                <input type="text" class="input p-2 border border-gray-300 rounded" id="title" required [(ngModel)]="newBook.title" name="title">
+            </div>
+            <div class="flex flex-col space-y-4">
+                <label for="author" class="text-lg">Author:</label>
+                <input type="text" class="input p-2 border border-gray-300 rounded" id="author" required [(ngModel)]="newBook.author" name="author">
+            </div>
+            <div class="flex flex-col space-y-4">
+                <label for="category" class="text-lg">Category:</label>
+                <input type="text" class="input p-2 border border-gray-300 rounded" id="category" required [(ngModel)]="newBook.category" name="category">
+            </div>
+            <div class="flex flex-col space-y-4">
+                <label for="coverImage" class="text-lg">Upload Cover Image:</label>
+                <input type="file" accept="image/*" (change)="onFileSelected($event)" class="input p-2 border border-gray-300 rounded" id="coverImage" name="coverImage">
+            </div>
+            <div class="flex flex-col space-y-4">
+                <label for="pdfFile" class="text-lg">Upload PDF File:</label>
+                <input type="file" accept="application/pdf" (change)="onPdfFileSelected($event)" class="input p-2 border border-gray-300 rounded" id="pdfFile" name="pdfFile">
+            </div>            
+            <div class="flex flex-col space-y-4">
+                <label for="summary" class="text-lg">Summary:</label>
+                <textarea class="input p-2 border border-gray-300 rounded" id="summary" required [(ngModel)]="newBook.relatedData.summary" name="summary"></textarea>
+            </div>
+            <div class="flex flex-col space-y-4">
+                <label for="publicationDate" class="text-lg">Publication Date:</label>
+                <input type="date" class="input p-2 border border-gray-300 rounded" id="publicationDate" required [(ngModel)]="newBook.relatedData.publicationDate" name="publicationDate">
+            </div>
+            <div class="flex flex-col space-y-4">
+                <label for="publisher" class="text-lg">Publisher:</label>
+                <input type="text" class="input p-2 border border-gray-300 rounded" id="publisher" required [(ngModel)]="newBook.relatedData.publisher" name="publisher">
+            </div>
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Upload</button>
+        </form>
+    </div>
+</div>

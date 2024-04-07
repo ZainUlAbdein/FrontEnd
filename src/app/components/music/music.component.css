@@ -1,0 +1,236 @@
+.thumbnail-container {
+    width: 100%; /* Set width to 100% to fill the container */
+    height: 200px; /* Set a fixed height for the thumbnail container */
+    overflow: hidden; /* Hide any overflow */
+  }
+  
+  .thumbnail-container img {
+    width: 100%; /* Set the image width to 100% */
+    height: 100%; /* Set the image height to 100% */
+    object-fit: cover; /* Ensure the image covers the entire container without distortion */
+  }
+  
+
+  .fallback-image {
+    /* Add CSS properties to style the fallback image */
+    /* For example: */
+    width: 100px;
+    height: 100px;
+}
+
+
+::ng-deep .mat-paginator-page-size-select {
+    width: 27px!important;
+}
+::ng-deep .mat-form-field-appearance-legacy .mat-form-field-underline {
+    background-color: transparent;
+}
+
+::ng-deep .mat-select-value {
+  color: #005999;
+    font-weight: bold;
+    font-size: 15px;
+}
+::ng-deep .mat-select-arrow {
+    color: #005999;
+}
+::ng-deep .mat-option{
+  padding: 0!important;
+
+}
+::ng-deep .mat-option-text {
+
+    text-align: right;
+}
+
+.fa-flag:hover {
+  color: rgb(71, 92, 122);
+}
+
+
+.spinner {
+  border: 6px solid rgba(255, 255, 255, 0.3); /* Adjust border width and color for visibility */
+  border-top-color: #333; /* Color of the spinner */
+  border-radius: 50%;
+  width: 60px; /* Increase the size of the spinner */
+  height: 60px; /* Increase the size of the spinner */
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(5px); /* Adjust the blur amount as needed */
+  background-color: rgba(255, 255, 255, 0.5); /* Adjust the background color and opacity as needed */
+  z-index: 9999; /* Ensure it's above other content */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+
+.Dark  {
+
+  background-color: #2d333a;
+  color: #b6c0ca;
+  padding: 1rem;
+  height: 100%;
+
+  .dark-theme {
+    background-color: #2d333a;
+    color: #b6c0ca;
+}
+
+.song-card {
+    background-color: #333;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.thumbnail-container img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+
+.song-info {
+  padding: 20px;
+}
+
+
+
+
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.song-info h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+
+
+.song-info p {
+    color: #ccc;
+    font-size: 14px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-play,
+.btn-download {
+    background-color: #6f7377;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-play:hover,
+.btn-download:hover {
+    background-color: #455c75;
+}
+
+
+
+
+
+
+}
+
+.Light {
+
+
+  background-color: #b6c0ca;
+  color: #2d333a;
+  padding: 1rem;
+  height: 100%;
+
+  .dark-theme {
+    background-color: #b6c0ca;
+    color: #2d333a;
+}
+
+.song-card {
+    background-color: #858a8f;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(48, 48, 48, 0.5);
+}
+
+.thumbnail-container img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+
+.song-info {
+  padding: 20px;
+}
+
+
+
+
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.song-info h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.song-info p {
+    color: #4d4d4d;
+    font-size: 14px;
+}
+
+
+
+.btn-play,
+.btn-download {
+    background-color: #9da4ad;
+    color: #4d4b4b;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-play:hover,
+.btn-download:hover {
+    background-color: #717983;
+}
+
+
+
+
+}

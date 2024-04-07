@@ -1,0 +1,88 @@
+<div class="container mx-auto px-4 py-8">
+    <h2 class="text-2xl font-semibold mb-4">Search for Songs</h2>
+    <div class="flex items-center mb-4">
+        <input id="searchInput" type="text" [(ngModel)]="query" placeholder="Enter song name..."
+            class="flex-grow border border-gray-300 rounded-md py-2 px-4 mr-2 focus:outline-none focus:border-blue-500" (keypress)="onKeyPress($event)">
+        <button id="searchButton" class="btn-search bg-blue-500 text-white py-2 px-4 rounded-md focus:outline-none "
+            (click)="search()"  >Search</button>
+    </div>
+
+    
+
+
+    <div [ngClass]="theme == Dark ? 'Dark' : 'Light'" class="container">
+
+        <div class="dark-theme" *ngIf="!showPlayer && showSearched">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <div class="grid-item" *ngFor="let song of searchResults">
+                    <div class="song-card">
+                        <div class="thumbnail-container">
+                            <img [src]="extractSubstring(song.thumbnails[0].url) || defaultThumbnailUrl" alt="My Custom Thumbnail" class="fallback-image">
+                        </div>
+                        <div class="song-info">
+                            <h3>{{ song.title }}</h3>
+                            <p>Duration: {{ song.duration }}</p>
+                        </div>
+                        <div class="buttons">
+                            <button class="btn-play" (click)="play(song)" (click)="getsong(song, song.videoId)" (click)="toggleSearched(false)" (click)="toggleReceiver(true,true)">
+                                <i class="fas fa-play"></i> <!-- Icon for Play -->
+                            </button>
+                            <button class="btn-download" (click)="toggleSearched(false)" (click)="getsong(song, song.videoId)" (click)="downloadAudio(song.videoId)">
+                                <i class="fas fa-download"></i> <!-- Icon for Download -->
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+
+        <div class="spinner-container" *ngIf="loading">
+            <div class="spinner"></div>
+        </div>
+        
+    
+        <div *ngIf="showPlayer && showSearched">
+            <a *ngIf="searchedd" >
+                <i (click)="toggleReceiver(false,false)" class="fa-2x fa-flag  fa-solid fa-arrow-left"></i>
+            </a>
+            <a *ngIf="!searchedd" >
+                <i (click)="toggleReceiver(false,true)"  class="fa-2x fa-flag  fa-solid fa-arrow-left"></i>
+            </a>
+            <app-music-player [SongData]="song" [recVid]  = "vid"  [NotSongData]="notSong" [recNotVid]  = "notVid"  [Searched]="searchedd"></app-music-player> <!--   yahan pr variables bana kr pass karny hain chart song k liye -->
+        </div>
+    
+
+
+    <div class="dark-theme" *ngIf="!showPlayer && !showSearched">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div class="grid-item" *ngFor="let item of chartData | keyvalue">
+            <div class="song-card">
+              <div  class="thumbnail-container">
+                <img [src]="item.value.thumbnail_url || defaultThumbnailUrl" alt="My Custom Thumbnail" class="fallback-image">
+              </div>
+              <div class="song-info">
+                <h3 class="text-lg font-semibold mb-2">{{ item.value.title }}</h3>
+                <!-- <p class="text-gray-600">Duration: {{ song.duration }}</p> -->
+                <div class="buttons">
+                    <button class="btn-play" 
+                    (click)="getnotsong(item ,item.value.videoId)" (click)="toggleSearched(true)" (click)="toggleReceiver(true,true)">
+                    <i class="fas fa-play"></i> <!-- Icon for Play -->
+                    </button>              
+                    <button  class="btn-download"
+                    (click)="getnotsong(item, item.value.videoId)"  (click)="toggleSearched(true)" (click)="downloadAudioFromURL()" >
+                    <i class="fas fa-download"></i> <!-- Icon for Download -->
+                    </button>   
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+
+    </div>
+
+
+</div>

@@ -1,0 +1,17 @@
+<div class="container">
+
+    <div *ngIf="!showReceiver">
+        <a routerLink="/receiver" routerLinkActive="active" (click)="toggleReceiver()"><p>sender works!</p></a>
+    </div>
+
+    <div *ngIf="showReceiver">
+        <a (click)="toggleReceiver()">Toggle Receiver</a>
+        <app-receiver [data]="String"></app-receiver>
+
+    </div>
+
+</div>
+
+
+
+

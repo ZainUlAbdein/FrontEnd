@@ -1,0 +1,54 @@
+
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --tw-mode: dark;
+    }
+}
+
+
+
+.Dark  {
+
+    
+
+    div {
+
+        background-color: #2d333a;
+        color: #b6c0ca;
+        padding: 20px 10px 20px 20px;
+
+    }
+
+    button {
+        background-color: #b6c0ca;
+        color: #2d333a;
+
+
+    }
+}
+
+.Light {
+
+    
+    div {
+
+        background-color: #b6c0ca;
+        color: #2d333a;
+        padding: 20px 10px 20px 20px;
+
+
+        
+    }
+
+    button {
+        background-color: #2d333a;
+        color: #b6c0ca;
+        
+
+
+
+    }
+    
+    
+}

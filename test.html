@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download File</title>
+</head>
+<body>
+    <script>
+
+function downloadFile(url, filename) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', url, true);
+    xhr.responseType = 'blob';
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            var blob = xhr.response;
+            var link = document.createElement('a');
+            link.href = window.URL.createObjectURL(blob);
+            link.download = filename;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    };
+    xhr.send();
+}
+
+// Example usage:
+downloadFile('https://rr2---sn-4pcxgpni-3ipe.googlevideo.com/videoplayback?expire=1712431968&ei=_04RZqHgPPKt_9EPhpmd4AQ&ip=54.159.26.210&id=o-AM_a7yNmh20VAmFB9wLPZ0G3FthuzoS7PBR5bFSSI-fi&itag=251&source=youtube&requiressl=yes&xpc=EgVo2aDSNQ%3D%3D&bui=AaUN6a1Ox8FXrNLJrfK50KwXy_gMbS59zQWqOTF8osfYsSq75tF3-IE5l2QKVGRxUQsAJfzTaNr7w8QR&spc=UWF9f1UaLCky3U_v7YFQvzhO8-dHettyYt_kx-lt5JdMP8dIHxBdeBmbmg&vprv=1&svpuc=1&mime=audio%2Fwebm&ns=_NMcxHy7HsNWOKZYVsngT94Q&gir=yes&clen=4339702&dur=254.201&lmt=1706131245155373&keepalive=yes&fexp=51141542&c=WEB&sefc=1&txp=4532434&n=4XsDns_-f8gWxA&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cxpc%2Cbui%2Cspc%2Cvprv%2Csvpuc%2Cmime%2Cns%2Cgir%2Cclen%2Cdur%2Clmt&sig=AJfQdSswRQIhAKCbU-RZQw_LKmym4G2SLCcChMyq64IEftoBX3T7ATf4AiBEkk0QYEEOsdB33odMepr6G8ltLmht1GXaDks1oh4wvw%3D%3D&redirect_counter=1&rm=sn-ab5eer7e&req_id=9c07f9733d17a3ee&cms_redirect=yes&ipbypass=yes&mh=DR&mip=125.62.90.74&mm=31&mn=sn-4pcxgpni-3ipe&ms=au&mt=1712409424&mv=m&mvi=2&pl=24&lsparams=ipbypass,mh,mip,mm,mn,ms,mv,mvi,pl&lsig=ALClDIEwRgIhALmYafTKuHBviomR6X4nMfh4QYwMh2G39ggB0pGLAFjnAiEA2hLZeHhQv4G6wf8uTaOjd4SH5-5x9a_c8pHxjHp31Vc%3D', 'audio.webm');
+
+
+//         function downloadFile(url, filename) {
+//     fetch(url, {
+//         mode: 'no-cors'
+//     })
+//     .then(response => response.blob())
+//     .then(blob => {
+//         const link = document.createElement('a');
+//         link.href = URL.createObjectURL(blob);
+//         link.download = filename;
+//         link.click();
+//         URL.revokeObjectURL(link.href);
+//     })
+//     .catch(error => console.error('Error downloading file:', error));
+// }
+
+// // Example usage:
+// downloadFile('https://rr2---sn-4pcxgpni-3ipe.googlevideo.com/videoplayback?expire=1712431968&ei=_04RZqHgPPKt_9EPhpmd4AQ&ip=54.159.26.210&id=o-AM_a7yNmh20VAmFB9wLPZ0G3FthuzoS7PBR5bFSSI-fi&itag=251&source=youtube&requiressl=yes&xpc=EgVo2aDSNQ%3D%3D&bui=AaUN6a1Ox8FXrNLJrfK50KwXy_gMbS59zQWqOTF8osfYsSq75tF3-IE5l2QKVGRxUQsAJfzTaNr7w8QR&spc=UWF9f1UaLCky3U_v7YFQvzhO8-dHettyYt_kx-lt5JdMP8dIHxBdeBmbmg&vprv=1&svpuc=1&mime=audio%2Fwebm&ns=_NMcxHy7HsNWOKZYVsngT94Q&gir=yes&clen=4339702&dur=254.201&lmt=1706131245155373&keepalive=yes&fexp=51141542&c=WEB&sefc=1&txp=4532434&n=4XsDns_-f8gWxA&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cxpc%2Cbui%2Cspc%2Cvprv%2Csvpuc%2Cmime%2Cns%2Cgir%2Cclen%2Cdur%2Clmt&sig=AJfQdSswRQIhAKCbU-RZQw_LKmym4G2SLCcChMyq64IEftoBX3T7ATf4AiBEkk0QYEEOsdB33odMepr6G8ltLmht1GXaDks1oh4wvw%3D%3D&redirect_counter=1&rm=sn-ab5eer7e&req_id=9c07f9733d17a3ee&cms_redirect=yes&ipbypass=yes&mh=DR&mip=125.62.90.74&mm=31&mn=sn-4pcxgpni-3ipe&ms=au&mt=1712409424&mv=m&mvi=2&pl=24&lsparams=ipbypass,mh,mip,mm,mn,ms,mv,mvi,pl&lsig=ALClDIEwRgIhALmYafTKuHBviomR6X4nMfh4QYwMh2G39ggB0pGLAFjnAiEA2hLZeHhQv4G6wf8uTaOjd4SH5-5x9a_c8pHxjHp31Vc%3D', 'audio.webm');
+
+    </script>
+</body>
+</html>
+
+
+
+
+

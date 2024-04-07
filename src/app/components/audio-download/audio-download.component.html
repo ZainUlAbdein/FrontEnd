@@ -1,0 +1,38 @@
+<!-- <audio #myAudio controls>
+    <source [src]="audioUrl" type="audio/mpeg">
+    Your browser does not support the audio element.
+
+  </audio>
+  
+  <video  id="myAudio" controls  controls="" autoplay="" name="media"><source [src]="audioUrl" type="audio/mpeg">
+    <a href={{audioUrl}} download>Download video</a>
+
+    <button></button>
+</video>
+
+<video id="myAudio" controls autoplay name="media">
+    <source src="your_audio_url_here.mp3" type="audio/mpeg">
+  </video>
+  
+  <script>
+    // Accessing the video element by its ID
+    var videoElement = document.getElementById("myAudio");
+  
+    // Accessing the source element inside the video element
+    var sourceElement = videoElement.querySelector("source");
+  
+    // Accessing the value of src attribute (i.e., audioUrl)
+    var audioUrl = sourceElement.getAttribute("src");
+  
+    console.log(audioUrl); // This will log the audioUrl to the console
+  </script>
+  -->
+
+  <video id="myAudio" controls autoplay name="media">
+    <source [src]="audioUrl" type="audio/mp3">
+  </video>
+  
+  <a href="#" (click)="downloadAudio('RBumgq5yVrA')">Download Video</a>
+
+
+  

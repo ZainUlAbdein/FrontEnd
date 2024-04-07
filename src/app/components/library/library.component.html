@@ -1,0 +1,78 @@
+<!-- Floating "Add a Book" button with plus icon -->
+<div class="floating-add-button">
+  <button class="btn btn-primary btn-floating" (click)="toggleUploadForm()">
+    <i class="fas fa-plus"></i>
+  </button>
+</div>
+
+<!-- Upload form (modified with additional classes for styling) -->
+<div class="upload-form-overlay" *ngIf="showUploadForm">
+  <div class="upload-form-popup">
+    <!-- Close button -->
+    <button class="close-button" (click)="toggleUploadForm()">
+      <i class="fas fa-times"></i>
+    </button>
+
+    <form #pdfForm="ngForm" (ngSubmit)="uploadPdf()" class="needs-validation" novalidate>
+      <h2 class="mb-4">Add a Book</h2>
+      <div class="mb-3">
+        <label for="title" class="form-label">Title:</label>
+        <input type="text" id="title" name="title" [(ngModel)]="pdfTitle" class="form-control" required>
+        <div class="invalid-feedback">Please provide a title.</div>
+      </div>
+      <div class="mb-3">
+        <label for="author" class="form-label">Author:</label>
+        <input type="text" id="author" name="author" [(ngModel)]="pdfAuthor" class="form-control" required>
+        <div class="invalid-feedback">Please provide an author.</div>
+      </div>
+      <div class="mb-3">
+        <label for="category" class="form-label">Category:</label>
+        <input type="text" id="category" name="category" [(ngModel)]="pdfCategory" class="form-control" required>
+        <div class="invalid-feedback">Please provide a category.</div>
+      </div>
+      <div class="mb-3">
+        <label for="coverImage" class="form-label">Cover Image:</label>
+        <input type="file" id="coverImage" (change)="onCoverImageChange($event)" accept="image/*" class="form-control" required>
+        <div class="invalid-feedback">Please choose a cover image.</div>
+      </div>
+      <div class="mb-3">
+        <label for="pdfFile" class="form-label">PDF File:</label>
+        <input type="file" id="pdfFile" (change)="onPdfFileChange($event)" accept=".pdf" class="form-control" required>
+        <div class="invalid-feedback">Please choose a PDF file.</div>
+      </div>
+      <button type="submit" [disabled]="!pdfForm.valid" class="btn btn-upload">Upload</button>
+    </form>
+  </div>
+</div>
+
+<!-- PDF Library -->
+<div class="container mt-5">
+  <h2 class="text-center mb-4">PDF Library</h2>
+  <div class="row row-cols-1 row-cols-md-4 g-4">
+    <div *ngFor="let document of pdfDocuments" class="col">
+      <!-- Book card -->
+      <div class="card h-100">
+        <!-- Card content -->
+        <img [src]="document.cover_image" class="card-img-top" alt="Cover Image">
+        <div class="card-body">
+          <h5 class="card-title">{{ document.title }}</h5>
+          <p class="card-text">Author: {{ document.author }}</p>
+          <p class="card-text">Category: {{ document.category }}</p>
+          <!-- Add click event to trigger the PDF view -->
+          <button class="btn btn-primary btn-view-pdf" (click)="viewPdf(document)">View PDF</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PDF viewer (conditionally rendered) -->
+<div *ngIf="showPdfViewer" class="fixed inset-0 flex justify-center items-center z-50 bg-gray-900 bg-opacity-50 backdrop-blur-md">
+  <div class="bg-white shadow-lg rounded-lg overflow-hidden max-w-7xl w-full">
+    <!-- Close button -->
+    <button class="close-pdf-icon top-0 left-0 m-4 text-gray-600 cursor-pointer duration-300 " (click)="togglePdfView()">
+      <i class="fas fa-times"></i>
+    </button>
+    <ngx-extended-pdf-viewer [src]="selectedPdfUrl" height="700px" width="100%"></ngx-extended-pdf-viewer>
+  </div>
+</div>
