@@ -139,7 +139,7 @@
   background-color: #2B6CB0;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 500px) {
   .custom-search .btn-search {
       display: none;
   }
