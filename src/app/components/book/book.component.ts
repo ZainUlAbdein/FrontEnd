@@ -158,7 +158,7 @@ export class BookComponent {
 
   downloadBook(book: Book): void {
     this.loading = true;
-    this.http.get<any>(`http://127.0.0.1:8000/api/songs/download-pdf/?url=https://www.pdfdrive.com${book.link}`).subscribe(data => {
+    this.http.get<any>(`https://drfapi-production.up.railway.app/api/songs/download-pdf/?url=https://www.pdfdrive.com${book.link}`).subscribe(data => {
       this.downloadUrl = data.download_link;
       const link = document.createElement('a');
       link.href = this.downloadUrl;
