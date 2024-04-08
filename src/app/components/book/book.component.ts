@@ -127,6 +127,12 @@ export class BookComponent {
     this.subscription = this.themeService.theme$.subscribe(theme => {
       this.theme = theme;
     });
+
+    this.http.get<any>(`https://drfapi-production.up.railway.app/api/songs/BookSearch/?search=Imran+khan`).subscribe(data => {
+        this.searchedBooks = data.books || [];
+
+        console.log(data)
+      });
   }
 
   toggleTheme(): void {
@@ -145,9 +151,7 @@ export class BookComponent {
 
         console.log(data)
       });
-    } else {
-      this.searchedBooks = [];
-    }
+    } 
   }
 
   downloadBook(book: Book): void {
