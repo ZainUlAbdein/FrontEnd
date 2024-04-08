@@ -28,6 +28,10 @@
         </div>
     </div>
 
+    <div class="spinner-container" *ngIf="loading">
+        <div class="spinner"></div>
+    </div>
+
 <div class="modal pt-20 " tabindex="-1" role="dialog" [ngClass]="{'show': previewUrl, 'd-block': previewUrl}">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">

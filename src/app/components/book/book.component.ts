@@ -122,6 +122,8 @@ export class BookComponent {
 
     Dark = 'dark';
   Light = 'light';
+  downloadUrl: any;
+  loading!: boolean;
 
   constructor(private http: HttpClient, private sanitizer: DomSanitizer, private themeService: ThemeService) { 
     this.subscription = this.themeService.theme$.subscribe(theme => {
@@ -155,9 +157,19 @@ export class BookComponent {
   }
 
   downloadBook(book: Book): void {
-    const downloadUrl = `https://drfapi-production.up.railway.app/api/songs/download-pdf/?required_html=${this.replaceUrl(book.link)}&pdf_name=${book.title}`;
-    window.open(downloadUrl, '_blank');
+    this.loading = true;
+    this.http.get<any>(`http://127.0.0.1:8000/api/songs/download-pdf/?url=https://www.pdfdrive.com${book.link}`).subscribe(data => {
+      this.downloadUrl = data.download_link;
+      const link = document.createElement('a');
+      link.href = this.downloadUrl;
+      link.download = 'downloaded_file.pdf'; // Specify the filename
+      document.body.appendChild(link);
+      link.click();
+      console.log(data);
+      this.loading = false;
+    });
   }
+  
 
   previewBook(book: Book): void {
     this.selectedBook = book;

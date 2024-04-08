@@ -232,6 +232,42 @@
 
 
 
+    .spinner {
+        border: 6px solid rgba(255, 255, 255, 0.3); /* Adjust border width and color for visibility */
+        border-top-color: #333; /* Color of the spinner */
+        border-radius: 50%;
+        width: 60px; /* Increase the size of the spinner */
+        height: 60px; /* Increase the size of the spinner */
+        animation: spin 1s linear infinite;
+      }
+      
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      
+      .spinner-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        backdrop-filter: blur(5px); /* Adjust the blur amount as needed */
+        background-color: rgba(255, 255, 255, 0.5); /* Adjust the background color and opacity as needed */
+        z-index: 9999; /* Ensure it's above other content */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      
+
+
+
+
 
 
 
