@@ -140,7 +140,7 @@ export class BookComponent {
 
   searchBooks(): void {
     if (this.searchTerm.trim()) {
-      this.http.get<any>(`https://bs-backend.vercel.app/api/BookSearch/?search=${this.searchTerm}`).subscribe(data => {
+      this.http.get<any>(`https://drfapi-production.up.railway.app/api/songs/BookSearch/?search=${this.searchTerm}`).subscribe(data => {
         this.searchedBooks = data.books || [];
 
         console.log(data)
@@ -151,14 +151,14 @@ export class BookComponent {
   }
 
   downloadBook(book: Book): void {
-    const downloadUrl = `http://localhost:8000/api/download-pdf/?required_html=${this.replaceUrl(book.link)}&pdf_name=${book.title}`;
+    const downloadUrl = `https://drfapi-production.up.railway.app/api/songs/download-pdf/?required_html=${this.replaceUrl(book.link)}&pdf_name=${book.title}`;
     window.open(downloadUrl, '_blank');
   }
 
   previewBook(book: Book): void {
     this.selectedBook = book;
     console.log(book.image)
-    this.http.get<any>(`http://localhost:8000/api/extract-data/?required_html=${book.link}`).subscribe(data => {
+    this.http.get<any>(`https://drfapi-production.up.railway.app/api/songs/extract-data/?required_html=${book.link}`).subscribe(data => {
       this.previewUrl = this.sanitizer.bypassSecurityTrustResourceUrl(data.view_url || '');
     });
   }
