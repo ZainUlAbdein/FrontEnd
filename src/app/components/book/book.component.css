@@ -350,6 +350,14 @@
 }
 
 
+
+@media (max-width: 300px) {
+    .book-card {
+        width: 250px; /* Further adjust width for even smaller screens */
+        height: 400px; /* Further adjust height for even smaller screens */
+    }
+  }
+
 .card-body {
   color: #22262b ;
 }
