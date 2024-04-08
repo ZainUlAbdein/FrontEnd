@@ -195,7 +195,7 @@
 
 @media (max-width: 350px) {
   .custom-search .searchbar {
-      width: calc(100% - 10px); /* Adjust as needed */
+      width: calc(30%); /* Adjust as needed */
   }
 }
 
