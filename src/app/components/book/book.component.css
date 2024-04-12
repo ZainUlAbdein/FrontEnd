@@ -180,9 +180,11 @@
         max-width: 100%;
     }
 
+    
+
     .card {
-        width: 100%;
-        max-width: 100%;
+        width: 110%;
+        max-width: 110%;
         margin-bottom: 20px;
         border-radius: 5px;
         box-sizing: border-box; /* Ensure padding and border are included in the width */

@@ -1,7 +1,10 @@
 <nav [ngClass]="theme == Dark ? 'Dark' : 'Light'" class="  mat-dark-theme bg-white shadow fixed top-0 w-full z-10">
   <div class="mx-auto">
     <div class="flex justify-between items-center py-4">
-      <a href="#" class="text-lg font-semibold" routerLink="/home" routerLinkActive="active">Books Studio</a>
+      <a href="#" class="flex items-center text-lg font-semibold" routerLink="/home" routerLinkActive="active">
+        <img src="assets/Images/logo.png" alt="Logo" class="h-12 mr-2"> <!-- Adjust the class to control the size of the logo -->
+        Books Studio
+      </a>
       <button (click)="toggleMenu()" class="text-gray-600 focus:outline-none md:hidden">
         <svg class="w-6 h-6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
           <path *ngIf="isMenuCollapsed" d="M4 6h16M4 12h16m-7 6h7"></path>
@@ -10,7 +13,7 @@
       </button>
       <div [ngClass]="{'hidden': isMenuCollapsed, 'md:block': true}" id="menuItems">
         <ul class="md:flex flex-col md:flex-row md:-mx-2">
-          <li class="my-1 md:mx-2">
+          <!-- <li class="my-1 md:mx-2">
             <a class="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900" href="#" routerLink="/home" routerLinkActive="active">Home</a>
           </li>
           <li class="my-1 md:mx-2">
@@ -18,7 +21,7 @@
           </li>
           <li class="my-1 md:mx-2">
             <a class="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900" href="#"  routerLink="/audio" routerLinkActive="active">Audio</a>
-          </li>
+          </li> -->
 
           <li class="my-1 md:mx-2">
             <button class=" toggle-button block px-4 py-2 text-sm font-medium hover:text-gray-900" (click)="toggleTheme()" >{{theme}} Theme</button>
