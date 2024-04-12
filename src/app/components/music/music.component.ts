@@ -196,7 +196,7 @@ export class MusicComponent implements OnInit {
   searchButton = document.getElementById('searchButton');
   // searchInput = document.getElementById('searchInput') as HTMLInputElement;
   @ViewChild('searchInput') searchInput!: ElementRef<HTMLInputElement>;
-  chartData!: { [key: string]: ChartItem };
+  chartData:  any[] = [];
   songName: any;
   finalVid: any;
   audiu_urll: any;
@@ -228,33 +228,135 @@ export class MusicComponent implements OnInit {
     this.subscription.unsubscribe();
   }
 
+
+  Initail: string[] = ['Maher zain', 'Atif Aslam', 'Asim Azhar', 'linkin Park', 'Coke studio', 'Nescafe Basement', 'shubh', 'sami yousuf', 'harif j', 'maroon 5', 'pakistani ost'];
+
+  selectedString: string = '';
+
+  selectRandomString() {
+    const randomIndex = Math.floor(Math.random() * this.Initail.length);
+    this.selectedString = this.Initail[randomIndex];
+  }
+
+
   ngOnInit(): void {
-        // Retrieve authentication token from local storage
+
+  this.selectRandomString();
+  this.makeApiCall(this.selectedString)
+
+
+
+  //   const requestOptions: RequestInit = {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify({ query: this.selectedString + 'mp3', result: '' }) // 'result' field is not used, so we can leave it empty
+  //   };
+
+  //   fetch('https://bs-backend.vercel.app/api/search/', requestOptions)
+  // .then(response => {
+  //   if (!response.ok) {
+  //     throw new Error('Network response was not ok');
+  //   }
+  //   return response.json();
+  // })
+  // .then(data => {
+  //   // Filter the results to only include those with a 'videoId'
+  //   const resultsWithVideoId = data.result.filter((result: { videoId: any; }) => result.videoId);
+
+  //   if (resultsWithVideoId.length > 0) {
+  //     // If there are results with a 'videoId', assign them to chartData
+  //     this.chartData = resultsWithVideoId;
+  //     console.log(this.chartData);
+  //   } else {
+  //     // If there are no results with a 'videoId', handle the case accordingly
+  //     console.log('No results with videoId found.');
+  //   }
+  // })
+  // .catch(error => {
+  //   // Handle any errors that occur during the fetch request
+  //   console.error('Error:', error);
+  // });
+    // fetch('https://bs-backend.vercel.app/api/search/', requestOptions)
+    //   .then(response => {
+    //     if (!response.ok) {
+    //       throw new Error('Network response was not ok');
+    //     }
+    //     return response.json();
+    //   })
+    //   .then(data => {
+    //     this.chartData = data.result;
+    //     console.log(this.chartData)
+
+    //   })
       
 
-      // Make the fetch request with the authentication token included in the headers
-      fetch('https://bs-backend.vercel.app/api/chart-data/', {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-        }
-      })
-      .then(response => {
-        if (!response.ok) {
-            throw new Error(`Failed to fetch chart data: ${response.status} ${response.statusText}`);
-        }
-        return response.json();
-      })
-      .then(data => {
-        this.chartData = data;
-        console.log(data);
-      })
-      .catch(error => {
-        console.error('Error fetching chart data:', error);
-      });
+
+      //   // Retrieve authentication token from local storage
+      
+
+      // // Make the fetch request with the authentication token included in the headers
+      // fetch('https://bs-backend.vercel.app/api/chart-data/', {
+      //   method: 'GET',
+      //   headers: {
+      //       'Content-Type': 'application/json',
+      //   }
+      // })
+      // .then(response => {
+      //   if (!response.ok) {
+      //       throw new Error(`Failed to fetch chart data: ${response.status} ${response.statusText}`);
+      //   }
+      //   return response.json();
+      // })
+      // .then(data => {
+      //   this.chartData = data;
+      //   console.log(data);
+      // })
+      // .catch(error => {
+      //   console.error('Error fetching chart data:', error);
+      // });
 
 
     
+  }
+
+
+
+
+
+  makeApiCall(selectedString: string) {
+    const requestOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+      body: {
+        query: selectedString + 'mp3',
+        result: ''
+      }
+    };
+
+    this.http.post<any>('https://bs-backend.vercel.app/api/search/', requestOptions.body, { headers: requestOptions.headers })
+      .subscribe(
+        data => {
+          // Filter the results to only include those with a 'videoId'
+          const resultsWithVideoId = data.result.filter((result: { videoId: any; }) => result.videoId);
+
+          if (resultsWithVideoId.length > 0) {
+            // If there are results with a 'videoId', assign them to chartData
+            console.log(resultsWithVideoId);
+            // Assign to chartData if needed
+            this.chartData = resultsWithVideoId
+          } else {
+            // If there are no results with a 'videoId', handle the case accordingly
+            console.log('No results with videoId found.');
+          }
+        },
+        error => {
+          // Handle any errors that occur during the API call
+          console.error('Error:', error);
+        }
+      );
   }
 
   
@@ -400,7 +502,7 @@ search(): void {
       this.songName = this.song.title;
      } else if (this.searchedd == true) {
        this.finalVid = this.notVid;
-       this.songName = this.notSong.value.title;
+       this.songName = this.notSong.title;
      }
 
 
@@ -510,10 +612,10 @@ search(): void {
         this.songName = this.song.title;
     } else if (this.searchedd == true) {
         this.finalVid = this.notVid;
-        this.songName = this.notSong.value.title;
+        this.songName = this.notSong.title;
     }
 
-    const apiUrl = `https://drfapi-production.up.railway.app/api/songs/audio/${this.finalVid}/`; // Replace with your API URL
+    const apiUrl = `https://bs-backend.vercel.app/api/audio/${this.finalVid}/`; // Replace with your API URL
     this.http.get(apiUrl, { responseType: 'blob' }).subscribe(
       (blob: Blob) => {
         const url = window.URL.createObjectURL(blob);

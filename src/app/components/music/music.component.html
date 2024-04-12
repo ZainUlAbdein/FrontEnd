@@ -65,21 +65,21 @@
 
     <div class="dark-theme" *ngIf="!showPlayer && !showSearched">
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          <div class="grid-item" *ngFor="let item of chartData | keyvalue">
+          <div class="grid-item" *ngFor="let item of chartData">
             <div class="song-card">
               <div  class="thumbnail-container">
-                <img [src]="item.value.thumbnail_url || defaultThumbnailUrl" alt="My Custom Thumbnail" class="fallback-image">
+                <img [src]="extractSubstring(item.thumbnails[0].url) || defaultThumbnailUrl" alt="My Custom Thumbnail" class="fallback-image">
               </div>
               <div class="song-info">
-                <h3 class="text-lg font-semibold mb-2">{{ item.value.title }}</h3>
+                <h3 class="text-lg font-semibold mb-2">{{ item.title }}</h3>
                 <!-- <p class="text-gray-600">Duration: {{ song.duration }}</p> -->
                 <div class="buttons">
                     <button class="btn-play" 
-                    (click)="getnotsong(item ,item.value.videoId)" (click)="toggleSearched(true)" (click)="toggleReceiver(true,true)">
+                    (click)="getnotsong(item ,item.videoId)" (click)="toggleSearched(true)" (click)="toggleReceiver(true,true)">
                     <i class="fas fa-play"></i> <!-- Icon for Play -->
                     </button>              
                     <button  class="btn-download"
-                    (click)="getnotsong(item, item.value.videoId)"  (click)="toggleSearched(true)" (click)="downloadAudioFromURL()" >
+                    (click)="getnotsong(item, item.videoId)"  (click)="toggleSearched(true)" (click)="downloadAudio(item.videoId)" >
                     <i class="fas fa-download"></i> <!-- Icon for Download -->
                     </button>   
                 </div>

@@ -104,14 +104,14 @@
 
 
 <div *ngIf="Searched == true">
-    <div class="bg-image flex justify-center items-center h-screen bg-cover bg-center" style="background-image: url('{{ NotSongData.value.thumbnail_url }}'); backdrop-filter: blur(20px);">
+    <div class="bg-image flex justify-center items-center h-screen bg-cover bg-center" style="background-image: url('{{ NotSongData.thumbnails[0].url }}'); backdrop-filter: blur(20px);">
     </div>
     <div  class="music-player player bg-gray-100 p-4 rounded-lg shadow-md w-96">
         <div class="info mt-4 flex items-center">
-            <img id="albumArt" [src]="NotSongData.value.thumbnail_url" alt="Album Artwork" class="w-24 h-24 rounded-md">
+            <img id="albumArt" [src]="extractSubstring(NotSongData.thumbnails[0].url)" alt="Album Artwork" class="w-24 h-24 rounded-md">
             <div class="details ml-4">
-                <h3 id="songTitle" class="text-lg font-bold">{{ NotSongData.value.title }}</h3>
-                <p id="artistName" class="text-sm ">{{ NotSongData.value.artists }}</p>
+                <h3 id="songTitle" class="text-lg font-bold">{{ NotSongData.title }}</h3>
+                <!-- <p id="artistName" class="text-sm ">{{ NotSongData.artists[1].name }}</p> -->
             </div>
         </div>
         <div class="progress-bar mt-4">

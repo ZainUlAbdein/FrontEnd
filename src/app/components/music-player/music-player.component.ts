@@ -124,7 +124,7 @@ export class MusicPlayerComponent {
     if (this.Searched == false) {
      this.SongData.videoId = videoId;
     } else if (this.Searched == true) {
-      this.NotSongData.value.videoId = videoId;
+      this.NotSongData.videoId = videoId;
       
     }
 
