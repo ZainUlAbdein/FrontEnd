@@ -1,10 +1,28 @@
-
-<div [ngClass]="theme == Dark ? 'Dark' : 'Light'">
-    <div  class="mx-auto py-8">
-        <h1 class="text-3xl font-bold mb-4">Dark Theme Example</h1>
-        <p>This is a simple example of implementing a dark theme using Tailwind CSS.</p>
-        <p>You can customize styles using {{theme}} prefix in your Tailwind classes.</p>
-        <button class="bg-blue-500 hover:bg-blue-600  font-bold py-2 px-4 rounded dark:bg-blue-700 dark:hover:bg-blue-800">Button</button>
+<div class="background">
+    <img src="imgs_audio/img-1.jpg" id="bg_img" />
+  </div>
+  <div class="container">
+    <!--===============Player Image================= -->
+    <div class="player_img">
+      <img src="imgs_audio/img-1.jpg" id="cover" class="active" />
     </div>
-</div>
-
+    <!--============Player Content -->
+    <h2 id="music_title">Capital Letters</h2>
+    <h3 id="musric_artist">Lorem, ipsum dolor.</h3>
+    <!--==============Player Progress & Timer -->
+    <div class="player_progress" id="player_progress" (click)="setProgressBar($event)">
+      <div class="progress" id="progress">
+        <div class="music_duration">
+          <span id="current_time">0:00</span>
+          <span id="duration">0:00</span>
+        </div>
+      </div>
+    </div>
+    <!--==============Player Controllers -->
+    <div class="player_controls">
+      <i class="fa-solid fa-backward" title="Previous" id="prev" (click)="rewind()"></i>
+      <i class="fa-solid fa-play play-button" title="Play" id="play" (click)="togglePlay()"></i>
+      <i class="fa-solid fa-forward" title="Next" id="next" (click)="forward()"></i>
+    </div>
+  </div>
+  

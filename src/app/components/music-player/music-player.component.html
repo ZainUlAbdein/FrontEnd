@@ -71,7 +71,37 @@
 <div class="container">
 
 <div *ngIf="Searched == false">
-    <div class="bg-image flex justify-center items-center h-screen bg-cover bg-center" style="background-image: url('{{ extractSubstring(SongData.thumbnails[0].url) }}'); backdrop-filter: blur(20px);">
+
+
+    <div class="centered-div">
+        <!-- Content of the centered div -->
+  
+        <div class="background">
+          <img [src]="extractSubstring(SongData.thumbnails[0].url)" alt="Album Artwork" id="bg_img" />
+      </div>
+      <div class="">
+          <div class="player_img">
+              <img [src]="extractSubstring(SongData.thumbnails[0].url)" id="cover" class="active" />
+          </div>
+          <h2 id="music_title">{{ SongData.title }}</h2>
+          <h3 id="musric_artist" *ngIf="SongData.artists && SongData.artists.length > 1 && SongData.artists[1]?.name" class="info-artist">{{SongData.artists[1].name}}</h3>
+          <div class="player_progress" id="player_progress" (click)="setProgressBar($event)">
+              <div class="progress" id="progress">
+                  <div class="music_duration">
+                      <span id="current_time">0:00</span>
+                      <span id="duration">0:00</span>
+                  </div>
+              </div>
+          </div>
+          <div class="player_controls">
+              <i class="fa-solid fa-backward" title="Previous" id="prev" (click)="rewind()"></i>
+              <i class="fa-solid fa-play play-button" title="Play" id="play" (click)="togglePlay()"></i>
+              <i class="fa-solid fa-forward" title="Next" id="next" (click)="forward()"></i>
+          </div>
+      </div>
+  
+      </div>
+    <!-- <div class="bg-image flex justify-center items-center h-screen bg-cover bg-center" style="background-image: url('{{ extractSubstring(SongData.thumbnails[0].url) }}'); backdrop-filter: blur(20px);">
     </div>
     <div  class="music-player player bg-gray-100 p-4 rounded-lg shadow-md w-96">
         <div class="info mt-4 flex items-center">
@@ -98,20 +128,21 @@
             </button>
         </div>
         <audio #audioPlayer id="audioPlayer" controls hidden></audio>
-    </div>
+    </div> -->
+
 
 </div>
 
 
 <div *ngIf="Searched == true">
-    <div class="bg-image flex justify-center items-center h-screen bg-cover bg-center" style="background-image: url('{{ NotSongData.thumbnails[0].url }}'); backdrop-filter: blur(20px);">
-    </div>
-    <div  class="music-player player bg-gray-100 p-4 rounded-lg shadow-md w-96">
+    <!-- <div class="bg-image flex justify-center items-center h-screen bg-cover bg-center" style="background-image: url('{{ NotSongData.thumbnails[0].url }}'); backdrop-filter: blur(20px);">
+    </div> -->
+    <!--<div  class="music-player player bg-gray-100 p-4 rounded-lg shadow-md w-96">
         <div class="info mt-4 flex items-center">
             <img id="albumArt" [src]="extractSubstring(NotSongData.thumbnails[0].url)" alt="Album Artwork" class="w-24 h-24 rounded-md">
             <div class="details ml-4">
                 <h3 id="songTitle" class="text-lg font-bold">{{ NotSongData.title }}</h3>
-                <!-- <p id="artistName" class="text-sm ">{{ NotSongData.artists[1].name }}</p> -->
+                <p id="artistName" class="text-sm ">{{ NotSongData.artists[1].name }}</p>
             </div>
         </div>
         <div class="progress-bar mt-4">
@@ -132,6 +163,47 @@
         </div>
         <audio #audioPlayer id="audioPlayer" controls hidden></audio>
     </div>
-</div>
+</div> -->
+
+
+
+    <div class="centered-div">
+      <!-- Content of the centered div -->
+
+      <div class="background">
+        <img [src]="extractSubstring(NotSongData.thumbnails[0].url)" alt="Album Artwork" id="bg_img" />
+    </div>
+    <div class="">
+        <div class="player_img">
+            <img [src]="extractSubstring(NotSongData.thumbnails[0].url)" id="cover" class="active" />
+        </div>
+        <h2 id="music_title">{{ NotSongData.title }}</h2>
+        <h3 id="musric_artist" *ngIf="NotSongData.artists && NotSongData.artists.length > 1 && NotSongData.artists[1]?.name" class="info-artist">{{NotSongData.artists[1].name}}</h3>
+        <div class="player_progress" id="player_progress" (click)="setProgressBar($event)">
+            <div class="progress" id="progress">
+                <div class="music_duration">
+                    <span id="current_time">0:00</span>
+                    <span id="duration">0:00</span>
+                </div>
+            </div>
+        </div>
+        <div class="player_controls">
+            <i class="fa-solid fa-backward" title="Previous" id="prev" (click)="rewind()"></i>
+            <i class="fa-solid fa-play play-button" title="Play" id="play" (click)="togglePlay()"></i>
+            <i class="fa-solid fa-forward" title="Next" id="next" (click)="forward()"></i>
+        </div>
+    </div>
+
+    </div>
+
+  
+      
+
+
+
+    
+
+
+
 
 </div>
