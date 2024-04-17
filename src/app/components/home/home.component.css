@@ -1,43 +1,35 @@
-/* src/app/home/home.component.css */
-.col-md-6 {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-h1 {
-  font-size: 2.5rem;
-}
-
-.lead {
-  font-size: 1.25rem;
-}
-
-/* src/app/home/home.component.css */
-section {
-  padding: 60px 0;
-}
-
-h2 {
-  margin-bottom: 40px;
-}
-
-.carousel-item img {
-  border-radius: 5px;
-  height: 300px;
-  object-fit: cover;
-}
-
 
 
 .Dark  {
 
 
+  .row.no-gutters > [class^="col-"] {
+    padding-right: 0;
+    padding-left: 0;
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+
+.book-card,
+.music-card {
+    flex: 1; /* Each div takes equal space */
+
+}
+
+
+.book-card,
+.music-card {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4); /* Add drop shadow */
+}
+
+  
   .music-card {
-    background-color: #b6c0ca;
-      color: #2d333a;
+    background-color: #6d6d6d;
+      color: #1b1b1b;
       padding: 50px 10px 20px 20px;
+      height: 100%;
+      justify-content: right;
 
 
             /* CSS */
@@ -111,9 +103,10 @@ h2 {
   }
 
   .book-card {
-    background-color: #2d333a;
-    color: #b6c0ca;
+    background-color: #1b1b1b;
+    color: #c7c7c7;
     padding: 50px 10px 20px 20px;
+    height: 100%;
 
 
   
@@ -128,7 +121,7 @@ h2 {
               background: transparent;
               border: none;
               position: relative;
-              color: #2d333a;
+              color: #1b1b1b;
               cursor: pointer;
               z-index: 1;
               padding: 10px 20px;
@@ -155,7 +148,7 @@ h2 {
               transform: translate(0%, 0%);
               width: 100%;
               height: 100%;
-              background: #b6c0ca;
+              background: #c7c7c7;
               border-radius: 10px;
             }
       
@@ -200,11 +193,35 @@ h2 {
 .Light {
 
 
+  .row.no-gutters > [class^="col-"] {
+    padding-right: 0;
+    padding-left: 0;
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+
+
+.book-card,
+.music-card {
+    flex: 1; /* Each div takes equal space */
+    height: 100%;
+
+}
+
+.book-card,
+.music-card {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4); /* Add drop shadow */
+}
+
+
+
 
   .music-card {
-    background-color: #2d333a;
-    color: #b6c0ca;
+    background-color: #1b1b1b;
+    color: #c7c7c7;
     padding: 50px 10px 20px 20px;
+    justify-content: right;
 
 
             /* CSS */
@@ -216,7 +233,7 @@ h2 {
               background: transparent;
               border: none;
               position: relative;
-              color: #2d333a;
+              color: #1b1b1b;
               cursor: pointer;
               z-index: 1;
               padding: 10px 20px;
@@ -243,7 +260,7 @@ h2 {
               transform: translate(0%, 0%);
               width: 100%;
               height: 100%;
-              background: #b6c0ca;
+              background: #c7c7c7;
               border-radius: 10px;
             }
       
@@ -277,8 +294,8 @@ h2 {
   }
 
   .book-card {
-    background-color: #b6c0ca;
-      color: #2d333a;
+    background-color: #c7c7c7;
+      color: #1b1b1b;
       padding: 50px 10px 20px 20px;
 
       /* CSS */
@@ -352,6 +369,7 @@ h2 {
   
   
 }
+
 
 
 

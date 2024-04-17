@@ -4,8 +4,8 @@
 
     div {
 
-        background-color: #22262b;
-        color: #708090;
+        background-color: #141414;
+        color: #c2c2c2;
         padding: 0 10px 0 20px;
 
     }
@@ -15,8 +15,8 @@
 
     .toggle-button {
 
-        background-color: #708090;
-        color: #22262b;
+        background-color: #c2c2c2;
+        color: #141414;
         border-radius: 20rem;
 
         }
@@ -27,8 +27,8 @@
     
     div {
 
-        background-color: #708090;
-        color: #22262b;
+        background-color: #c2c2c2;
+        color: #141414;
         padding: 0 10px 0 20px;
         
 
@@ -40,8 +40,8 @@
 
     .toggle-button {
 
-        background-color: #22262b;
-        color: #bec5d1;
+        background-color: #141414;
+        color: #c2c2c2;
         border-radius: 20rem;
 
 
@@ -56,4 +56,40 @@
 
     }
     
+    
+    .Dark div {
+        background-color: #141414;
+        color: #c2c2c2;
+        padding: 0 10px 0 20px;
+    }
+    
+    .Dark .toggle-button {
+        background-color: #c2c2c2;
+        color: #141414;
+        border-radius: 50%; /* Add border radius for rounded corners */
+        box-shadow: 0 0 10px 3px rgba(112, 128, 144, 0.5); /* Add glowing outline */
+        width: 40px; /* Set button width */
+        height: 40px; /* Set button height */
+        display: flex; /* Use flexbox */
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+    }
+    
+    .Light div {
+        background-color: #c2c2c2;
+        color: #141414;
+        padding: 0 10px 0 20px;
+    }
+    
+    .Light .toggle-button {
+        background-color: #141414;
+        color: #c2c2c2;
+        border-radius: 50%; /* Add border radius for rounded corners */
+        box-shadow: 0 0 10px 3px rgba(32, 34, 37, 0.5); /* Add glowing outline */
+        width: 40px; /* Set button width */
+        height: 40px; /* Set button height */
+        display: flex; /* Use flexbox */
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+    }
     

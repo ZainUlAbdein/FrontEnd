@@ -86,6 +86,7 @@
   display: flex;
   align-items: center;
   margin-bottom: 1rem;
+  
 }
 
 .custom-search .flex-grow {
@@ -97,7 +98,7 @@
 }
 
 .custom-search .border-gray-300 {
-  border-color: #CBD5E0;
+  border-color: #8d8d8d;
 }
 
 .custom-search .rounded-md {
@@ -178,7 +179,7 @@
 
 .custom-search .searchbar {
   flex-grow: 1;
-  border: 1px solid #CBD5E0;
+  border: 1px solid #8a8a8a;
   border-radius: 0.375rem;
   padding: 0.5rem;
   margin-right: 0.5rem;
@@ -210,14 +211,298 @@
 
 .Dark  {
 
-  background-color: #2d333a;
-  color: #b6c0ca;
+  background-color: #222222;
+  color: #e0e0e0;
   padding: 1rem;
   height: 100%;
 
+
+
+  .searchBar {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-bottom: 30px;
+  }
+  
+  #searchQueryInput {
+    width: 100%;
+    height: 2.8rem;
+    background: #363636;
+    outline: none;
+    border: none;
+    border-radius: 1.625rem;
+    padding: 0 3.5rem 0 1.5rem;
+    font-size: 1rem;
+  }
+  
+  #searchQuerySubmit {
+    width: 3.5rem;
+    height: 2.8rem;
+    margin-left: -3.5rem;
+    background: none;
+    border: none;
+    outline: none;
+  }
+  
+  #searchQuerySubmit:hover {
+    cursor: pointer;
+  }
+
+
+
+  .card {
+    margin: 0 10px;
+    background-color: #222222;
+  }
+  
+  .card {
+    position: relative;
+    width: 250px;
+    height: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+    color: #ddd;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.25);
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: box-shadow .4s;
+    &:before {
+      content: "";
+      position: absolute;
+      z-index: 10;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-image: linear-gradient(to top, black 0%, transparent 50%);
+      opacity: .8;
+      transition: opacity .2s;
+    }
+    img {
+      position: absolute;
+      z-index: 0;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    .info {
+      position: absolute;
+      z-index: 10;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 10px 15px;
+      text-align: center;
+      transition: transform 0.3s ease-out, opacity 0.2s;
+      .info-artist {
+        font-size: 1em;
+        font-weight: bold;
+        line-height: 1.2em;
+      }
+      .info-album {
+        font-size: .7em; 
+      }
+      .info-title {
+        margin-top: .3em;
+        font-size: 1.2em;
+        line-height: 1.5em;
+      }
+      .info-artist,
+      .info-album,
+      .info-title {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+    }
+    .controls {
+      position: absolute;
+      z-index: 15;
+      bottom: 15px;
+      left: 15px;
+      right: 15px;
+      display: flex;
+      align-items: center;
+      font-size: 12px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: transform 0.3s ease-out, opacity 0.2s;
+      .controls-play {
+        position: relative;
+        width: 40px;
+        height: 40px;
+        flex-grow: 0;
+        flex-shrink: 0;
+        flex-basis: auto;
+        background-color: #666666;
+        border-radius: 50%;
+        transition: background-color 0.1s;
+        cursor: pointer;
+        &:before {
+          content: "";
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          width: 0;
+          height: 0;
+          margin: auto;
+          border-style: solid;
+          border-width: 5px 0 5px 10px;
+          border-color: transparent transparent transparent currentColor;
+          transform: translateX(1px);
+        }
+        &:hover {
+          background-color: #23804a;
+        }
+      }
+      /* Add this CSS code to your stylesheet */
+.card {
+  position: relative; /* Ensure the card is a positioned parent for absolute positioning */
+  margin: 0 10px;
+  background-color: #222222;
+}
+
+/* Add this CSS code to your stylesheet */
+.controls-download {
+  position: absolute;
+  top: -220px; /* Adjust as needed */
+  right: 0px; /* Adjust as needed */
+  width: 40px;
+  height: 40px;
+  background-color: #969696; /* Adjust background color as needed */
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.1s;
+  cursor: pointer;
+}
+
+.controls-download i {
+  color: #fff; /* Icon color */
+}
+
+.controls-download:hover {
+  background-color: #2980b9; /* Adjust hover background color as needed */
+}
+
+
+      .controls-progress-bar {
+        position: relative;
+        height: 20px;
+        flex-grow: 1;
+        flex-shrink: 0;
+        flex-basis: 0;
+        margin: 0 8px;
+        &:after,
+        .controls-progress-bar-listened {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          margin: auto;
+          display: block;
+          height: 3px;
+          background-color: currentColor;
+          border-radius: 5px;
+        }
+        &:after {
+          content: "";
+          width: 100%;
+          opacity: 0.4;
+        }
+        .controls-progress-bar-listened {
+          width: 40%;
+          &:after {
+            content: "";
+            position: absolute;
+            z-index: 20;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            display: block;
+            width: 12px;
+            height: 12px;
+            margin: auto;
+            background-color: white;
+            transform: translateX(50%);
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.2s;
+            cursor: grab;
+          }
+          &:active:after {
+            cursor: grabbing;
+          }
+        }
+        &:hover {
+          .listened:after {
+            opacity: 1;
+          }
+        }
+      }
+      .controls-time {
+        margin: 0 5px 0 0;
+      }
+      .controls-action {
+        cursor: pointer;
+        &:hover {
+          opacity: .7;
+        }
+        .dots {
+          display: none;
+          position: relative;
+          width: 4px;
+          height: 4px;
+          margin: 10px 5px;
+          background-color: currentColor;
+          border-radius: 50%;
+          &:after,
+          &:before {
+            content: "";
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background-color: currentColor;
+            border-radius: 50%;
+          }
+          &:after {
+            top: -8px;
+          }
+          &:before {
+            top: 8px;
+          }
+        }
+      }
+    }
+    &:hover {
+      box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+      &:before {
+        opacity: .9;
+      }
+      .info {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      .controls {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+  
+
+
+
   .dark-theme {
-    background-color: #2d333a;
-    color: #b6c0ca;
+    background-color: #222222;
+    color: #e0e0e0;
 }
 
 .song-card {
@@ -290,14 +575,302 @@
 .Light {
 
 
-  background-color: #b6c0ca;
-  color: #2d333a;
+  
+
+
+  background-color: #e0e0e0;
+  color: #bdbdbd;
   padding: 1rem;
   height: 100%;
 
+
+
+  .searchBar {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-bottom: 30px;
+  }
+  
+  #searchQueryInput {
+    width: 100%;
+    height: 2.8rem;
+    background: #d4d4d4;
+    outline: none;
+    border: none;
+    border-radius: 1.625rem;
+    padding: 0 3.5rem 0 1.5rem;
+    font-size: 1rem;
+    color: #3b3b3b;
+  }
+  
+  #searchQuerySubmit {
+    width: 3.5rem;
+    height: 2.8rem;
+    margin-left: -3.5rem;
+    background: none;
+    border: none;
+    outline: none;
+  }
+  
+  #searchQuerySubmit:hover {
+    cursor: pointer;
+  }
+
+
+
+  .card {
+    margin: 0 10px;
+    background-color: #e0e0e0;
+  }
+  
+  .card {
+    position: relative;
+    width: 250px;
+    height: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+    color: #d1d1d1;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.25);
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: box-shadow .4s;
+    &:before {
+      content: "";
+      position: absolute;
+      z-index: 10;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-image: linear-gradient(to top, black 0%, transparent 50%);
+      opacity: .8;
+      transition: opacity .2s;
+    }
+    img {
+      position: absolute;
+      z-index: 0;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    .info {
+      position: absolute;
+      z-index: 10;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 10px 15px;
+      text-align: center;
+      transition: transform 0.3s ease-out, opacity 0.2s;
+      .info-artist {
+        font-size: 1em;
+        font-weight: bold;
+        line-height: 1.2em;
+      }
+      .info-album {
+        font-size: .7em; 
+      }
+      .info-title {
+        margin-top: .3em;
+        font-size: 1.2em;
+        line-height: 1.5em;
+      }
+      .info-artist,
+      .info-album,
+      .info-title {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+    }
+    .controls {
+      position: absolute;
+      z-index: 15;
+      bottom: 15px;
+      left: 15px;
+      right: 15px;
+      display: flex;
+      align-items: center;
+      font-size: 12px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: transform 0.3s ease-out, opacity 0.2s;
+      .controls-play {
+        position: relative;
+        width: 40px;
+        height: 40px;
+        flex-grow: 0;
+        flex-shrink: 0;
+        flex-basis: auto;
+        background-color: #cecece;
+        border-radius: 50%;
+        transition: background-color 0.1s;
+        cursor: pointer;
+        &:before {
+          content: "";
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          width: 0;
+          height: 0;
+          margin: auto;
+          border-style: solid;
+          border-width: 5px 0 5px 10px;
+          color: #222222;
+          border-color: transparent transparent transparent currentColor;
+          transform: translateX(1px);
+        }
+        &:hover {
+          background-color: #7c7c7c;
+        }
+      }
+      /* Add this CSS code to your stylesheet */
+.card {
+  position: relative; /* Ensure the card is a positioned parent for absolute positioning */
+  margin: 0 10px;
+  background-color: #b8b8b8;
+}
+
+/* Add this CSS code to your stylesheet */
+.controls-download {
+  position: absolute;
+  top: -220px; /* Adjust as needed */
+  right: 0px; /* Adjust as needed */
+  width: 40px;
+  height: 40px;
+  background-color: #cacaca; /* Adjust background color as needed */
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.1s;
+  cursor: pointer;
+}
+
+.controls-download i {
+  color: #272727; /* Icon color */
+}
+
+.controls-download:hover {
+  background-color: #7a7a7a; /* Adjust hover background color as needed */
+}
+
+
+      .controls-progress-bar {
+        position: relative;
+        height: 20px;
+        flex-grow: 1;
+        flex-shrink: 0;
+        flex-basis: 0;
+        margin: 0 8px;
+        &:after,
+        .controls-progress-bar-listened {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          margin: auto;
+          display: block;
+          height: 3px;
+          background-color: currentColor;
+          border-radius: 5px;
+        }
+        &:after {
+          content: "";
+          width: 100%;
+          opacity: 0.4;
+        }
+        .controls-progress-bar-listened {
+          width: 40%;
+          &:after {
+            content: "";
+            position: absolute;
+            z-index: 20;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            display: block;
+            width: 12px;
+            height: 12px;
+            margin: auto;
+            background-color: white;
+            transform: translateX(50%);
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.2s;
+            cursor: grab;
+          }
+          &:active:after {
+            cursor: grabbing;
+          }
+        }
+        &:hover {
+          .listened:after {
+            opacity: 1;
+          }
+        }
+      }
+      .controls-time {
+        margin: 0 5px 0 0;
+      }
+      .controls-action {
+        cursor: pointer;
+        &:hover {
+          opacity: .7;
+        }
+        .dots {
+          display: none;
+          position: relative;
+          width: 4px;
+          height: 4px;
+          margin: 10px 5px;
+          background-color: currentColor;
+          border-radius: 50%;
+          &:after,
+          &:before {
+            content: "";
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background-color: currentColor;
+            border-radius: 50%;
+          }
+          &:after {
+            top: -8px;
+          }
+          &:before {
+            top: 8px;
+          }
+        }
+      }
+    }
+    &:hover {
+      box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+      &:before {
+        opacity: .9;
+      }
+      .info {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      .controls {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+  
+
+
   .dark-theme {
-    background-color: #b6c0ca;
-    color: #2d333a;
+    background-color: #e0e0e0;
+    color: #222222;
 }
 
 .song-card {
@@ -359,3 +932,7 @@
 
 
 }
+
+
+
+

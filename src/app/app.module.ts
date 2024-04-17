@@ -39,6 +39,7 @@ import { TokenInterceptor } from './shared/token.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthService } from './service/auth.service';
 import { LoginComponent } from './components/login/login.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
@@ -63,6 +64,7 @@ import { LoginComponent } from './components/login/login.component';
     AudioDownloadComponent,
     AuthComponent,
     LoginComponent,
+    FooterComponent,
   
 
 

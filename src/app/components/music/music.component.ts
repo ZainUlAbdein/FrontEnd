@@ -461,11 +461,11 @@ search(): void {
 }
 
 
-  play(song: any) {
-    // Access the clicked song data here
-    console.log(song);
-    // Perform further actions as needed
-  }
+  // play(song: any) {
+  //   // Access the clicked song data here
+  //   console.log(song);
+  //   // Perform further actions as needed
+  // }
 
   getsong(song: any, video_id: any) {
     console.log('song:  ',song)
@@ -634,6 +634,59 @@ search(): void {
     );
     
   }
+
+
+  isPlaying: boolean = false;
+  animationFrame!: number;
+  currentTime: string = '0:00';
+
+  togglePlay() {
+    this.isPlaying = !this.isPlaying;
+    if (this.isPlaying) {
+      this.play();
+    } else {
+      this.pause();
+    }
+  }
+
+  play() {
+    // Add your play logic here
+    // You can use HTMLMediaElement or other audio libraries for playing the song
+    console.log('Playing...');
+    // Start animation if needed
+    this.animateProgressBar();
+  }
+
+  pause() {
+    // Add your pause logic here
+    console.log('Paused.');
+    // Stop animation if needed
+    cancelAnimationFrame(this.animationFrame);
+  }
+
+  animateProgressBar() {
+    const startTime = Date.now();
+    const duration = 137; // Example duration in seconds
+
+    const updateProgress = () => {
+      const elapsed = Date.now() - startTime;
+      const progress = (elapsed / (duration * 1000)) * 100;
+      this.currentTime = this.formatTime(elapsed / 1000);
+      if (progress <= 100 && this.isPlaying) {
+        this.animationFrame = requestAnimationFrame(updateProgress);
+      }
+    };
+
+    updateProgress();
+  }
+
+  formatTime(seconds: number): string {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = Math.floor(seconds % 60);
+    const formattedSeconds = remainingSeconds < 10 ? `0${remainingSeconds}` : `${remainingSeconds}`;
+    return `${minutes}:${formattedSeconds}`;
+  }
+
 
 
   }

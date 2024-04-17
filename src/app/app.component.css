@@ -1,8 +1,8 @@
 
 .Dark  {
 
-        background-color: #2d333a;
-        color: #b6c0ca;
+        background-color: #222222;
+        color: #e0e0e0;
         padding: 1rem;
         height: 100%;
 
@@ -12,8 +12,8 @@
 .Light {
 
 
-        background-color: #b6c0ca;
-        color: #2d333a;
+        background-color: #e0e0e0;
+        color: #222222;
         padding: 1rem;
         height: 100%;
 

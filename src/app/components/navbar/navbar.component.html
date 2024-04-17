@@ -13,18 +13,14 @@
       </button>
       <div [ngClass]="{'hidden': isMenuCollapsed, 'md:block': true}" id="menuItems">
         <ul class="md:flex flex-col md:flex-row md:-mx-2">
-          <!-- <li class="my-1 md:mx-2">
-            <a class="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900" href="#" routerLink="/home" routerLinkActive="active">Home</a>
-          </li>
           <li class="my-1 md:mx-2">
-            <a class="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900" href="#" routerLink="/upload" routerLinkActive="active">Upload</a>
-          </li>
-          <li class="my-1 md:mx-2">
-            <a class="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900" href="#"  routerLink="/audio" routerLinkActive="active">Audio</a>
-          </li> -->
-
-          <li class="my-1 md:mx-2">
-            <button class=" toggle-button block px-4 py-2 text-sm font-medium hover:text-gray-900" (click)="toggleTheme()" >{{theme}} Theme</button>
+            <div>
+              <button class="block px-4 py-2 text-sm font-medium hover:text-gray-900" (click)="toggleTheme()">
+                <i *ngIf="theme != Dark" class="fas fa-sun"></i>
+                <i *ngIf="theme == Dark" class="fas fa-moon"></i>
+              </button>
+            </div>
+            
           </li>
 
         </ul>
