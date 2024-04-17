@@ -219,7 +219,7 @@
 
 
   .searchBar {
-    width: 100%;
+    width: 95%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -259,7 +259,7 @@
   
   .card {
     position: relative;
-    width: 250px;
+    width: 230px;
     height: 300px;
     border-radius: 10px;
     overflow: hidden;
@@ -363,11 +363,7 @@
         }
       }
       /* Add this CSS code to your stylesheet */
-.card {
-  position: relative; /* Ensure the card is a positioned parent for absolute positioning */
-  margin: 0 10px;
-  background-color: #222222;
-}
+
 
 /* Add this CSS code to your stylesheet */
 .controls-download {
@@ -586,7 +582,7 @@
 
 
   .searchBar {
-    width: 100%;
+    width: 95%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -623,11 +619,12 @@
   .card {
     margin: 0 10px;
     background-color: #e0e0e0;
+  
   }
   
   .card {
     position: relative;
-    width: 250px;
+    width: 230px;
     height: 300px;
     border-radius: 10px;
     overflow: hidden;
@@ -734,7 +731,7 @@
       /* Add this CSS code to your stylesheet */
 .card {
   position: relative; /* Ensure the card is a positioned parent for absolute positioning */
-  margin: 0 10px;
+  margin: 0;
   background-color: #b8b8b8;
 }
 
