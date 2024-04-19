@@ -59,20 +59,24 @@
         <div class="spinner"></div>
     </div>
 
-<div class="modal pt-20 " tabindex="-1" role="dialog" [ngClass]="{'show': previewUrl, 'd-block': previewUrl}">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title text-light">{{ selectedBook?.title }}</h5>
-                <button type="button" class="close text-light" aria-label="Close" (click)="closePreview()">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <iframe *ngIf="previewUrl" [src]="previewUrl" frameborder="0" width="100%" height="700px"></iframe>
+<div [ngClass]="{'show': previewUrl, 'd-block': previewUrl}">
+    <div *ngIf="previewUrl" class="modal pt-20 " tabindex="-1" role="dialog" >
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title ">{{ selectedBook?.title }}</h5>
+                    <button type="button" class="close" aria-label="Close" (click)="closePreview()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <iframe  [src]="previewUrl" frameborder="0" width="100%" height="700px"></iframe>
+                </div>
             </div>
         </div>
     </div>
+
 </div>
+
 
 </div>
