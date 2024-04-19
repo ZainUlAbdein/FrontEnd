@@ -68,7 +68,9 @@
 <button (click)="rewindAudio(10)">Rewind 10 seconds</button>
 <audio id="audioPlayer" controls></audio> -->
 
-<div class="container">
+<div  [ngClass]="theme == Dark ? 'Dark' : 'Light'" >
+
+    <div class="container">
 
 <div *ngIf="Searched == false">
 
@@ -205,5 +207,9 @@
 
 
 
+
+</div>
+
+</div>
 
 </div>
