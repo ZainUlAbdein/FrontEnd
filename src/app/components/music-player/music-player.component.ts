@@ -179,7 +179,7 @@ export class MusicPlayerComponent {
       this.loadMusic(this.song_url)
       this.btnEvents()
       this.playMusic()
-    }, 8000); // Call myFunction after 5 seconds (5000 milliseconds)
+    }, 10000); // Call myFunction after 5 seconds (5000 milliseconds)
 
     
 
