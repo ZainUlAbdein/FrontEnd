@@ -125,12 +125,25 @@ export class BookComponent {
   downloadUrl: any;
   loading!: boolean;
 
+  Initail: string[] = ['Harry Potter', 'Rich Dad Poor Dad', 'Programming in Python'];
+
+  selectedString: string = '';
+
+  selectRandomString() {
+    const randomIndex = Math.floor(Math.random() * this.Initail.length);
+    this.selectedString = this.Initail[randomIndex];
+  }
+
+
   constructor(private http: HttpClient, private sanitizer: DomSanitizer, private themeService: ThemeService) { 
     this.subscription = this.themeService.theme$.subscribe(theme => {
       this.theme = theme;
     });
 
-    this.http.get<any>(`https://drfapi-production.up.railway.app/api/songs/BookSearch/?search=Imran+khan`).subscribe(data => {
+    
+  this.selectRandomString();
+
+    this.http.get<any>(`https://drfapi-production.up.railway.app/api/songs/BookSearch/?search=${this.selectedString}`).subscribe(data => {
         this.searchedBooks = data.books || [];
 
         console.log(data)
