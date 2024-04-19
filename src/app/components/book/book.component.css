@@ -237,9 +237,9 @@ main {
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding-bottom: 30px;
-    padding-left: 30px;
-    padding-top: 3rem;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-top: 2rem;
   }
   
   #searchQueryInput {
@@ -361,9 +361,9 @@ main {
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding-bottom: 30px;
-    padding-left: 30px;
-    padding-top: 3rem;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-top: 2rem;
   }
   
   #searchQueryInput {
